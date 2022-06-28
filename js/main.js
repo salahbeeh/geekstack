@@ -13,7 +13,7 @@ jQuery(function($) {
 	mobileToggleClick();
 	onePageNavigation();
 	siteIstotope();
-	portfolioItemClick();
+	projectItemClick();
 	owlCarouselPlugin();
 	floatingLabel();
 	scrollWindow();
@@ -434,25 +434,25 @@ var onePageNavigation = function() {
 
 
 // load ajax page
-var portfolioItemClick = function() {
+var projectItemClick = function() {
 	$('.ajax-load-page').on('click', function(e) {
 		
 		var id = $(this).data('id'),
 			href = $(this).attr('href');
 
-		if ( $('#portfolio-single-holder > div').length ) {
-			$('#portfolio-single-holder > div').remove();
+		if ( $('#project-single-holder > div').length ) {
+			$('#project-single-holder > div').remove();
 		} 
 
-		TweenMax.to('.loader-portfolio-wrap', 1, { top: '-50px', autoAlpha: 1, display: 'block', ease: Power4.easeOut });
+		TweenMax.to('.loader-project-wrap', 1, { top: '-50px', autoAlpha: 1, display: 'block', ease: Power4.easeOut });
 
 		$('html, body').animate({
-    	scrollTop: $('#portfolio-section').offset().top - 50
+    	scrollTop: $('#project-section').offset().top - 50
 		}, 700, 'easeInOutExpo', function() {
 		});
 		
 		setTimeout(function(){
-			loadPortfolioSinglePage(id, href);
+			loadprojectSinglePage(id, href);
 		}, 100);
 
 		e.preventDefault();
@@ -460,17 +460,17 @@ var portfolioItemClick = function() {
 	});
 
 	// Close
-	$('body').on('click', '.js-close-portfolio', function() {
+	$('body').on('click', '.js-close-project', function() {
 
 		setTimeout(function(){
 			$('html, body').animate({
-	    	scrollTop: $('#portfolio-section').offset().top - 50
+	    	scrollTop: $('#project-section').offset().top - 50
 			}, 700, 'easeInOutExpo');
 		}, 200);
 
-		TweenMax.set('.portfolio-wrapper', { visibility: 'visible', height: 'auto' });
-		TweenMax.to('.portfolio-single-inner', 1, { marginTop: '50px', opacity: 0,  display: 'none', onComplete() {
-			TweenMax.to('.portfolio-wrapper', 1, { marginTop: '0px', autoAlpha: 1, position: 'relative' });
+		TweenMax.set('.project-wrapper', { visibility: 'visible', height: 'auto' });
+		TweenMax.to('.project-single-inner', 1, { marginTop: '50px', opacity: 0,  display: 'none', onComplete() {
+			TweenMax.to('.project-wrapper', 1, { marginTop: '0px', autoAlpha: 1, position: 'relative' });
 
 		} });
 		
@@ -479,27 +479,27 @@ var portfolioItemClick = function() {
 
 $(document).ajaxStop(function(){
 	setTimeout(function(){
-		TweenMax.to('.loader-portfolio-wrap', 1, { top: '0px', autoAlpha: 0, ease: Power4.easeOut });	
+		TweenMax.to('.loader-project-wrap', 1, { top: '0px', autoAlpha: 0, ease: Power4.easeOut });	
 	}, 400);
 });
 
-var loadPortfolioSinglePage = function(id, href) {
+var loadprojectSinglePage = function(id, href) {
 	$.ajax({
 		url: href,
 		type: 'GET',
 		success: function(html) {
 
-			TweenMax.to('.portfolio-wrapper', 1, { marginTop: '50px', autoAlpha: 0, visibility: 'hidden', onComplete() {
-				TweenMax.set('.portfolio-wrapper', { height: 0 });
+			TweenMax.to('.project-wrapper', 1, { marginTop: '50px', autoAlpha: 0, visibility: 'hidden', onComplete() {
+				TweenMax.set('.project-wrapper', { height: 0 });
 			} })
 
-			var pSingleHolder = $('#portfolio-single-holder');
+			var pSingleHolder = $('#project-single-holder');
 	    	
-			var getHTMLContent = $(html).find('.portfolio-single-wrap').html();
+			var getHTMLContent = $(html).find('.project-single-wrap').html();
 
 			pSingleHolder.append(
-				'<div id="portfolio-single-'+id+
-				'" class="portfolio-single-inner"><span class="unslate_co--close-portfolio js-close-portfolio d-flex align-items-center"><span class="close-portfolio-label">Back to Portfolio</span><span class="icon-close2 wrap-icon-close"></span></span>' + getHTMLContent + '</div>'
+				'<div id="project-single-'+id+
+				'" class="project-single-inner"><span class="unslate_co--close-project js-close-project d-flex align-items-center"><span class="close-project-label">Back to project</span><span class="icon-close2 wrap-icon-close"></span></span>' + getHTMLContent + '</div>'
 			);
 
 			setTimeout(function() {
@@ -507,10 +507,10 @@ var loadPortfolioSinglePage = function(id, href) {
 			}, 10);
 
 			setTimeout(function() {
-				TweenMax.set('.portfolio-single-inner', { marginTop: '100px', autoAlpha: 0, display: 'none' });
-				TweenMax.to('.portfolio-single-inner', .5, { marginTop: '0px', autoAlpha: 1, display: 'block', onComplete() {
+				TweenMax.set('.project-single-inner', { marginTop: '100px', autoAlpha: 0, display: 'none' });
+				TweenMax.to('.project-single-inner', .5, { marginTop: '0px', autoAlpha: 1, display: 'block', onComplete() {
 
-					TweenMax.to('.loader-portfolio-wrap', 1, { top: '0px', autoAlpha: 0, ease: Power4.easeOut });	
+					TweenMax.to('.loader-project-wrap', 1, { top: '0px', autoAlpha: 0, ease: Power4.easeOut });	
 				} });
 			}, 700 );
 		}
