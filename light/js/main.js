@@ -543,7 +543,7 @@ var contactForm = function() {
 				},
 				message: {
 					required: true,
-					minlength: 5
+					minlength: 1
 				}
 			},
 			messages: {

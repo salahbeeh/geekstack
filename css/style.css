@@ -98,11 +98,13 @@ a, a:hover {
   border-radius: 30px;
   padding-top: 15px;
   padding-bottom: 15px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 25px;
+  padding-right: 25px;
   letter-spacing: .1rem;
   text-transform: uppercase;
   font-weight: 900;
+  margin-top: 20px;
+  
 }
 
 .btn:active, .btn:focus {
@@ -120,7 +122,7 @@ a, a:hover {
 }
 
 .btn.btn-outline-pill.btn-custom-light:hover, .btn.btn-outline-pill.btn-custom-light:active, .btn.btn-outline-pill.btn-custom-light:focus {
-  border-color: #D63447;
+  border-color: #D63447;;
   
 }
 
@@ -2097,3 +2099,14 @@ span.error {
   visibility: hidden;
 }
 
+#projectPost{
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  padding-left: 80px;
+}
+
+img.img-fluid{
+  padding-left: 30px;
+  padding-right: 30px;
+}
